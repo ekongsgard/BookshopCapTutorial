@@ -25,7 +25,50 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
-      []
+      - name: BookshopCapTutorial-auth
+      - name: BookshopCapTutorial-db
+
+  - name: BookshopCapTutorial-db-deployer
+    type: hdb
+    path: db
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: custom
+      commands:
+        - npm run build
+    requires:
+      - name: BookshopCapTutorial-db
 
 resources:
-  []
+  - name: BookshopCapTutorial-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: BookshopCapTutorial-${org}-${space}
+        tenant-mode: dedicated
+        oauth2-configuration:
+          credential-types:
+            - "binding-secret"
+            - "x509"
+        role-collections:
+          - name: 'clerk (BookshopCapTutorial ${org}-${space})'
+            description: 'generated'
+            role-template-references:
+              - '$XSAPPNAME.clerk'
+          - name: 'admin (BookshopCapTutorial ${org}-${space})'
+            description: 'generated'
+            role-template-references:
+              - '$XSAPPNAME.admin'
+          - name: 'manager (BookshopCapTutorial ${org}-${space})'
+            description: 'generated'
+            role-template-references:
+              - '$XSAPPNAME.manager'
+  - name: BookshopCapTutorial-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared

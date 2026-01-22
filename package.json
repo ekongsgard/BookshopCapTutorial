@@ -10,5 +10,6 @@
   "sapux": [
     "app/browsebooks",
     "app/bookcatalogueinternal"
-  ]
+  ],
+  "dependencies": {}
 }
