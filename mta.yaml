@@ -4,6 +4,7 @@ version: 1.0.0-SNAPSHOT
 description: "A simple CAP project."
 parameters:
   enable-parallel-deployments: true
+  deploy_mode: html5-repo
 modules:
   - name: BookshopCapTutorial-srv
     type: java
@@ -27,6 +28,7 @@ modules:
     requires:
       - name: BookshopCapTutorial-auth
       - name: BookshopCapTutorial-db
+      - name: BookshopCapTutorial-destination
 
   - name: BookshopCapTutorial-db-deployer
     type: hdb
@@ -39,6 +41,84 @@ modules:
         - npm run build
     requires:
       - name: BookshopCapTutorial-db
+
+  - name: BookshopCapTutorial-app-deployer
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: BookshopCapTutorial-auth
+      - name: srv-api
+      - name: BookshopCapTutorial-html5-repo-host
+        parameters:
+          content-target: true
+          config:
+            HTML5Runtime_enabled: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - name: BookshopCapTutorialbookcatalogueinternal
+          artifacts:
+            - bookcatalogueinternal.zip
+          target-path: resources
+        - name: BookshopCapTutorialbrowsebooks
+          artifacts:
+            - browsebooks.zip
+          target-path: resources
+
+  - name: BookshopCapTutorialbookcatalogueinternal
+    type: html5
+    path: app/bookcatalogueinternal
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm ci
+        - npm run build
+      supported-platforms:
+        []
+  - name: BookshopCapTutorialbrowsebooks
+    type: html5
+    path: app/browsebooks
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm ci
+        - npm run build
+      supported-platforms:
+        []
+
+  - name: BookshopCapTutorial-destinations
+    type: com.sap.application.content
+    requires:
+      - name: BookshopCapTutorial-auth
+        parameters:
+          service-key:
+            name: BookshopCapTutorial-auth-key
+      - name: BookshopCapTutorial-html5-repo-host
+        parameters:
+          service-key:
+            name: BookshopCapTutorial-html5-repo-host-key
+      - name: srv-api
+      - name: BookshopCapTutorial-destination
+        parameters:
+          content-target: true
+    build-parameters:
+      no-source: true
+    parameters:
+      content:
+        instance:
+          existing_destinations_policy: update
+          destinations:
+            - Name: BookshopCapTutorial-html5-repository
+              ServiceInstanceName: BookshopCapTutorial-html5-repo-host
+              ServiceKeyName: BookshopCapTutorial-html5-repo-host-key
+              sap.cloud.service: BookshopCapTutorial.service
+            - Name: BookshopCapTutorial-auth
+              Authentication: OAuth2UserTokenExchange
+              ServiceInstanceName: BookshopCapTutorial-auth
+              ServiceKeyName: BookshopCapTutorial-auth-key
+              sap.cloud.service: BookshopCapTutorial.service
 
 resources:
   - name: BookshopCapTutorial-auth
@@ -72,3 +152,29 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: BookshopCapTutorial-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            existing_destinations_policy: update
+            destinations:
+              - Name: srv-api
+                URL: ~{srv-api/srv-url}
+                Authentication: NoAuthentication
+                Type: HTTP
+                ProxyType: Internet
+                HTML5.ForwardAuthToken: true
+                HTML5.DynamicDestination: true
+    requires:
+      - name: srv-api
+
+  - name: BookshopCapTutorial-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host

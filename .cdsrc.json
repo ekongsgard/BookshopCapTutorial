@@ -3,6 +3,9 @@
     "[production]": {
       "auth": "xsuaa"
     },
-    "db": "hana"
+    "db": "hana",
+    "destinations": true,
+    "html5-repo": true,
+    "workzone": true
   }
 }

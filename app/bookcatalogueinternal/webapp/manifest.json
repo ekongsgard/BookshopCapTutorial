@@ -24,6 +24,18 @@
           "odataVersion": "4.0"
         }
       }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "browsebooks-display": {
+          "semanticObject": "browsebooks",
+          "action": "display",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
     }
   },
   "sap.ui": {
@@ -145,5 +157,9 @@
         "enabled": false
       }
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "BookshopCapTutorial.service"
   }
 }
