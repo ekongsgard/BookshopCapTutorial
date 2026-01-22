@@ -6,6 +6,8 @@ using {
     Currency
 } from '@sap/cds/common';
 
+@odata.draft.enabled
+@Capabilities.UpdateRestrictions.Updatable
 entity Books : cuid, managed {
     @mandatory
     title              : String(50);
@@ -28,7 +30,8 @@ entity Books : cuid, managed {
     _genre             : Association to one Genres;
 }
 
-
+@odata.draft.enabled
+@Capabilities.UpdateRestrictions.Updatable
 entity Authors : cuid, managed {
     @mandatory
     firstname     : String(70);
@@ -47,20 +50,24 @@ entity Authors : cuid, managed {
 
     @readonly
     age           : Int16;
-    /*_books        : Association to many Books
-                        on _books._author = $self;*/
+/*_books        : Association to many Books
+                    on _books._author = $self;*/
 }
 
+@odata.draft.enabled
+@Capabilities.UpdateRestrictions.Updatable
 entity Genres : cuid, managed {
     @mandatory
     genre       : String(50);
 
     @mandatory
     description : String(100);
-    /*_books      : Association to many Books
-                      on _books._genre = $self;*/
+/*_books      : Association to many Books
+                  on _books._genre = $self;*/
 }
 
+@odata.draft.enabled
+@Capabilities.UpdateRestrictions.Updatable
 entity OrderHeader : cuid, managed {
     @assert.notNull
     @readonly
