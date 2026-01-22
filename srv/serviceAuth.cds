@@ -1,5 +1,5 @@
 using from './service.cds';
-/*
+
 annotate BookCatalogueInternal with @(requires: ['clerk','admin','manager'] );
 
 annotate  BookCatalogueInternal.Books with @(restrict: [
@@ -24,4 +24,3 @@ annotate OrderOverviewInternal with @(requires: ['clerk','admin','manager'] );
 annotate  AuthorOverviewInternal with @(requires: ['clerk','admin','manager'] );
 
 annotate GenreOverviewInternal with @(requires: ['clerk','admin','manager'] ); 
-*/
