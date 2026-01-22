@@ -1,0 +1,6 @@
+ID,idNumber,netAmount,deliveryDate,numberOfItems,createdAt,createdBy,modifiedAt,modifiedBy
+27409446-3bb4-41f2-80a5-c03cccd67a04,28,3247317.43,2013-10-29,15,2014-06-24T00:00:00.000Z,createdBy.gbh9i@example.net,2000-10-27T00:00:00.000Z,modifiedBy.gbh9i@example.com
+27409447-8054-4c60-981f-2a6f5b7ae495,41,5266207.96,2013-12-31,40,2004-12-06T00:00:00.000Z,createdBy.gbh9j@example.com,2014-06-06T00:00:00.000Z,modifiedBy.gbh9j@example.com
+27409448-5e33-47b6-b751-790a615660ce,88,6933215.46,2022-11-10,93,2015-05-06T00:00:00.000Z,createdBy.gbh9k@example.com,2022-06-01T00:00:00.000Z,modifiedBy.gbh9k@example.com
+27409449-e61b-4356-b004-9bc205a2de64,83,5287493.08,2005-11-16,80,2000-07-20T00:00:00.000Z,createdBy.gbh9l@example.org,2005-09-02T00:00:00.000Z,modifiedBy.gbh9l@example.com
+27409450-a1ec-4a03-b427-08f1e3ea9ff8,0,5279780.69,2017-05-26,25,2002-12-26T00:00:00.000Z,createdBy.gbh9m@example.net,2013-11-30T00:00:00.000Z,modifiedBy.gbh9m@example.net

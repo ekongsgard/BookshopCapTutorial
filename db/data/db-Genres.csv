@@ -1,0 +1,6 @@
+ID,genre,description,createdAt,createdBy,modifiedAt,modifiedBy
+97675234-95e4-41fd-8954-2718ee09a6a6,genre-976752,description-976752,2000-08-22T00:00:00.000Z,createdBy.kxo0@example.org,2018-04-15T00:00:00.000Z,modifiedBy.kxo0@example.org
+20920951-a045-4ece-a4d4-1bc894a42a95,genre-2092095,description-2092095,2019-08-28T00:00:00.000Z,createdBy.18u9r@example.org,2008-11-20T00:00:00.000Z,modifiedBy.18u9r@example.com
+2092096e-6642-466a-8d49-55c41c817760,genre-2092096,description-2092096,2019-04-04T00:00:00.000Z,createdBy.18u9s@example.net,2019-06-14T00:00:00.000Z,modifiedBy.18u9s@example.com
+20920976-ea13-46d0-8884-f6c065c8cc61,genre-2092097,description-2092097,2000-12-02T00:00:00.000Z,createdBy.18u9t@example.org,2013-12-31T00:00:00.000Z,modifiedBy.18u9t@example.com
+20920986-ca15-47e6-b4bd-300f7e5d4c36,genre-2092098,description-2092098,2022-07-03T00:00:00.000Z,createdBy.18u9u@example.com,2020-07-24T00:00:00.000Z,modifiedBy.18u9u@example.net

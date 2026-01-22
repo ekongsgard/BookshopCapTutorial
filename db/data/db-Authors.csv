@@ -1,0 +1,6 @@
+ID,firstname,lastname,dateOfBirth,dateOfDeath,description,currentAuthor,age,createdAt,createdBy,modifiedAt,modifiedBy
+29546293-52ad-439d-94b7-584b6a4d02a5,firstname-29546293,lastname-29546293,2000-03-14,2016-02-16,description-29546293,false,97,2020-01-05T00:00:00.000Z,createdBy.hla2d@example.net,2020-10-09T00:00:00.000Z,modifiedBy.hla2d@example.com
+14513812-b519-42a9-a7df-e1a40ef9d61e,firstname-14513812,lastname-14513812,2014-10-25,2001-08-20,description-14513812,true,100,2017-03-19T00:00:00.000Z,createdBy.8n2xg@example.com,2010-01-17T00:00:00.000Z,modifiedBy.8n2xg@example.com
+14513813-6465-4ccc-86a6-26ed46a8dadc,firstname-14513813,lastname-14513813,2011-12-08,2007-03-12,description-14513813,false,92,2003-10-10T00:00:00.000Z,createdBy.8n2xh@example.org,2021-07-10T00:00:00.000Z,modifiedBy.8n2xh@example.org
+14513814-17c5-4a68-a8b0-aacfc0cb8d05,firstname-14513814,lastname-14513814,2019-05-18,2012-05-10,description-14513814,true,92,2009-09-01T00:00:00.000Z,createdBy.8n2xi@example.com,2012-07-18T00:00:00.000Z,modifiedBy.8n2xi@example.net
+14513815-fefd-410d-bab3-335326074dcd,firstname-14513815,lastname-14513815,2016-10-13,2008-01-20,description-14513815,false,85,2007-07-03T00:00:00.000Z,createdBy.8n2xj@example.com,2015-02-12T00:00:00.000Z,modifiedBy.8n2xj@example.com
