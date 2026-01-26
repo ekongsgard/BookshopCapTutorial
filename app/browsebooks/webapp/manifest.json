@@ -127,7 +127,19 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable"
+                    "type": "ResponsiveTable",
+                    "condensedTableLayout": false
+                  },
+                  "columns": {
+                    "DataField::title": {
+                      "widthIncludingColumnHeader": true
+                    },
+                    "DataField::pages": {
+                      "widthIncludingColumnHeader": false
+                    },
+                    "DataField::length": {
+                      "widthIncludingColumnHeader": false
+                    }
                   }
                 }
               }

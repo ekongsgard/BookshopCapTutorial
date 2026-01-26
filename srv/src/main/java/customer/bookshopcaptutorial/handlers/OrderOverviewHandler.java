@@ -1,17 +1,17 @@
 package customer.bookshopcaptutorial.handlers;
 
-import cds.gen.bookcatalogue.BookCatalogue_;
-import cds.gen.bookcatalogue.BooksAddItemToOrderContext;
+import cds.gen.orderoverview.OrderHeaderCancelOrderContext;
+import cds.gen.orderoverview.OrderOverview_;
 import com.sap.cds.services.handler.EventHandler;
 import com.sap.cds.services.handler.annotations.On;
 import com.sap.cds.services.handler.annotations.ServiceName;
 import org.springframework.stereotype.Component;
 
 @Component
-@ServiceName(BookCatalogue_.CDS_NAME)
-public class BookCatalogueBooksAddItemToOrderHandler implements EventHandler {
+@ServiceName(OrderOverview_.CDS_NAME)
+public class OrderOverviewHandler implements EventHandler {
   @On
-  public void handleAddItemToOrder(BooksAddItemToOrderContext context) {
+  public void handleCancelOrder(OrderHeaderCancelOrderContext context) {
     // Your code goes here
     context.setCompleted();
   }

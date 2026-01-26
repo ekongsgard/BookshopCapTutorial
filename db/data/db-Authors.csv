@@ -1,6 +1,6 @@
-ID,firstname,lastname,dateOfBirth,dateOfDeath,description,currentAuthor,age,createdAt,createdBy,modifiedAt,modifiedBy
-29546293-52ad-439d-94b7-584b6a4d02a5,firstname-29546293,lastname-29546293,2000-03-14,2016-02-16,description-29546293,false,97,2020-01-05T00:00:00.000Z,createdBy.hla2d@example.net,2020-10-09T00:00:00.000Z,modifiedBy.hla2d@example.com
-14513812-b519-42a9-a7df-e1a40ef9d61e,firstname-14513812,lastname-14513812,2014-10-25,2001-08-20,description-14513812,true,100,2017-03-19T00:00:00.000Z,createdBy.8n2xg@example.com,2010-01-17T00:00:00.000Z,modifiedBy.8n2xg@example.com
-14513813-6465-4ccc-86a6-26ed46a8dadc,firstname-14513813,lastname-14513813,2011-12-08,2007-03-12,description-14513813,false,92,2003-10-10T00:00:00.000Z,createdBy.8n2xh@example.org,2021-07-10T00:00:00.000Z,modifiedBy.8n2xh@example.org
-14513814-17c5-4a68-a8b0-aacfc0cb8d05,firstname-14513814,lastname-14513814,2019-05-18,2012-05-10,description-14513814,true,92,2009-09-01T00:00:00.000Z,createdBy.8n2xi@example.com,2012-07-18T00:00:00.000Z,modifiedBy.8n2xi@example.net
-14513815-fefd-410d-bab3-335326074dcd,firstname-14513815,lastname-14513815,2016-10-13,2008-01-20,description-14513815,false,85,2007-07-03T00:00:00.000Z,createdBy.8n2xj@example.com,2015-02-12T00:00:00.000Z,modifiedBy.8n2xj@example.com
+ID,firstname,lastname,dateOfBirth,dateOfDeath,description,createdAt,createdBy,modifiedAt,modifiedBy
+30647860-9929-4089-90fb-815fcb76a6bb,firstname-30647860,lastname-30647860,2016-08-18,2016-01-01,description-30647860,2003-11-30T23:00:00.000Z,createdBy.i8w1g@example.net,2017-06-19T23:00:00.000Z,modifiedBy.i8w1g@example.org
+30873318-be2e-4c39-af54-867f2b9f7698,firstname-30873318,lastname-30873318,2023-12-01,2002-09-11,description-30873318,2009-02-07T23:00:00.000Z,createdBy.idq06@example.org,2008-08-18T23:00:00.000Z,modifiedBy.idq06@example.com
+30873319-c34a-43f6-91ce-74a089a43cdc,firstname-30873319,lastname-30873319,2012-07-04,2014-05-18,description-30873319,2014-09-07T23:00:00.000Z,createdBy.idq07@example.com,2015-05-19T23:00:00.000Z,modifiedBy.idq07@example.net
+30873320-6d59-4b64-8e57-78a7f48f996d,firstname-30873320,lastname-30873320,2002-04-27,2009-02-28,description-30873320,2019-06-30T23:00:00.000Z,createdBy.idq08@example.org,2014-06-04T23:00:00.000Z,modifiedBy.idq08@example.com
+30873321-b4c2-4b09-890c-098e66662eef,firstname-30873321,lastname-30873321,2018-01-19,2022-09-01,description-30873321,2011-12-23T23:00:00.000Z,createdBy.idq09@example.net,2002-04-24T23:00:00.000Z,modifiedBy.idq09@example.com

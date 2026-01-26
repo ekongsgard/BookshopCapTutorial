@@ -1,0 +1,148 @@
+@server=http://localhost:8080
+@username=clerk
+@password=clerkpw
+
+
+### OrderHeader
+# @name OrderHeader_GET
+GET {{server}}/odata/v4/OrderOverview/OrderHeader
+Authorization: Basic {{username}}:{{password}}
+
+
+### OrderHeader Drafts GET
+# @name OrderHeader_Drafts_GET
+GET {{server}}/odata/v4/OrderOverview/OrderHeader?$filter=(IsActiveEntity eq false)
+Authorization: Basic {{username}}:{{password}}
+
+
+### OrderHeader Draft POST
+# @name OrderHeader_Draft_POST
+POST {{server}}/odata/v4/OrderOverview/OrderHeader
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "idNumber": 4,
+  "netAmount": 5674071,
+  "deliveryDate": "2013-06-16",
+  "numberOfItems": 61,
+  "_orderItems": [
+    {
+      "ID": "25078316-b4cc-4b18-b240-31b4d2bcf85b",
+      "_books": {
+        "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+      },
+      "quantity": 35
+    },
+    {
+      "ID": "25078317-2118-447e-9b3e-22290f589dbc",
+      "_books": {
+        "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+      },
+      "quantity": 52
+    }
+  ],
+  "createdAt": "2011-03-13T23:00:00.000Z",
+  "createdBy": "createdBy.ehwie@example.org",
+  "modifiedAt": "2020-11-22T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.ehwie@example.org"
+}
+
+
+### Result from POST request above
+@draftID={{OrderHeader_Draft_POST.response.body.$.ID}}
+
+
+### OrderHeader Draft PATCH
+# @name OrderHeader_Draft_Patch
+PATCH {{server}}/odata/v4/OrderOverview/OrderHeader(ID={{draftID}},IsActiveEntity=false)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "idNumber": 4,
+  "netAmount": 5674071,
+  "deliveryDate": "2013-06-16",
+  "numberOfItems": 61,
+  "_orderItems": [
+    {
+      "ID": "25078316-b4cc-4b18-b240-31b4d2bcf85b",
+      "_books": {
+        "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+      },
+      "quantity": 35
+    },
+    {
+      "ID": "25078317-2118-447e-9b3e-22290f589dbc",
+      "_books": {
+        "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+      },
+      "quantity": 52
+    }
+  ],
+  "createdAt": "2011-03-13T23:00:00.000Z",
+  "createdBy": "createdBy.ehwie@example.org",
+  "modifiedAt": "2020-11-22T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.ehwie@example.org"
+}
+
+
+### OrderHeader Draft Prepare
+# @name OrderHeader_Draft_Prepare
+POST {{server}}/odata/v4/OrderOverview/OrderHeader(ID={{draftID}},IsActiveEntity=false)/OrderOverview.draftPrepare
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
+
+
+### OrderHeader Draft Activate
+# @name OrderHeader_Draft_Activate
+POST {{server}}/odata/v4/OrderOverview/OrderHeader(ID={{draftID}},IsActiveEntity=false)/OrderOverview.draftActivate
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
+
+
+### OrderItems
+# @name OrderItems_GET
+GET {{server}}/odata/v4/OrderOverview/OrderItems
+Authorization: Basic {{username}}:{{password}}
+
+
+### OrderItems
+# @name OrderItems_POST
+POST {{server}}/odata/v4/OrderOverview/OrderItems
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "25078316-b4cc-4b18-b240-31b4d2bcf85b",
+  "_books": {
+    "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+  },
+  "quantity": 35
+}
+
+
+### OrderItems
+# @name OrderItems_PATCH
+PATCH {{server}}/odata/v4/OrderOverview/OrderItems/25078316-b4cc-4b18-b240-31b4d2bcf85b
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "25078316-b4cc-4b18-b240-31b4d2bcf85b",
+  "_books": {
+    "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+  },
+  "quantity": 35
+}
+
+
+### OrderItems
+# @name OrderItems_DELETE
+DELETE {{server}}/odata/v4/OrderOverview/OrderItems/25078316-b4cc-4b18-b240-31b4d2bcf85b
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}

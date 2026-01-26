@@ -3,8 +3,8 @@ using {db} from '../db/db.cds';
 
 // should not require specific role
 // should only allow to palce orders on books
-@readonly
-service BookCatalogue {
+
+service BookCatalogue @readonly{
     action placeOrder();
     entity Books as projection on db.Books
         actions  {

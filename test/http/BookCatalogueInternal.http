@@ -1,0 +1,247 @@
+@server=http://localhost:8080
+@username=clerk
+@password=clerkpw
+
+
+### Books
+# @name Books_GET
+GET {{server}}/odata/v4/BookCatalogueInternal/Books
+Authorization: Basic {{username}}:{{password}}
+
+
+### Books Drafts GET
+# @name Books_Drafts_GET
+GET {{server}}/odata/v4/BookCatalogueInternal/Books?$filter=(IsActiveEntity eq false)
+Authorization: Basic {{username}}:{{password}}
+
+
+### Books Draft POST
+# @name Books_Draft_POST
+POST {{server}}/odata/v4/BookCatalogueInternal/Books
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "title": "title-1259382",
+  "stock": 91,
+  "description": "description-1259382",
+  "pages": 31,
+  "length": 0.07,
+  "price": 1617737.93,
+  "currency": {
+    "code": "621"
+  },
+  "discountText": "discountText-1259382",
+  "discountPercentage": 44,
+  "_author": {
+    "ID": "27462078-4e64-431f-aaf8-53b0ca7c82d4"
+  },
+  "_genre": {
+    "ID": "27554664-0a8e-4a5d-963e-1084e790d3dc"
+  },
+  "createdAt": "2014-01-09T23:00:00.000Z",
+  "createdBy": "createdBy.qzqu@example.com",
+  "modifiedAt": "2021-08-20T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.qzqu@example.org"
+}
+
+
+### Result from POST request above
+@draftID={{Books_Draft_POST.response.body.$.ID}}
+
+
+### Books Draft PATCH
+# @name Books_Draft_Patch
+PATCH {{server}}/odata/v4/BookCatalogueInternal/Books(ID={{draftID}},IsActiveEntity=false)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "title": "title-1259382",
+  "stock": 91,
+  "description": "description-1259382",
+  "pages": 31,
+  "length": 0.07,
+  "price": 1617737.93,
+  "currency": {
+    "code": "621"
+  },
+  "discountText": "discountText-1259382",
+  "discountPercentage": 44,
+  "_author": {
+    "ID": "27462078-4e64-431f-aaf8-53b0ca7c82d4"
+  },
+  "_genre": {
+    "ID": "27554664-0a8e-4a5d-963e-1084e790d3dc"
+  },
+  "createdAt": "2014-01-09T23:00:00.000Z",
+  "createdBy": "createdBy.qzqu@example.com",
+  "modifiedAt": "2021-08-20T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.qzqu@example.org"
+}
+
+
+### Books Draft Prepare
+# @name Books_Draft_Prepare
+POST {{server}}/odata/v4/BookCatalogueInternal/Books(ID={{draftID}},IsActiveEntity=false)/BookCatalogueInternal.draftPrepare
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
+
+
+### Books Draft Activate
+# @name Books_Draft_Activate
+POST {{server}}/odata/v4/BookCatalogueInternal/Books(ID={{draftID}},IsActiveEntity=false)/BookCatalogueInternal.draftActivate
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
+
+
+### Currencies
+# @name Currencies_GET
+GET {{server}}/odata/v4/BookCatalogueInternal/Currencies
+Authorization: Basic {{username}}:{{password}}
+
+
+### Authors
+# @name Authors_GET
+GET {{server}}/odata/v4/BookCatalogueInternal/Authors
+Authorization: Basic {{username}}:{{password}}
+
+
+### Authors Drafts GET
+# @name Authors_Drafts_GET
+GET {{server}}/odata/v4/BookCatalogueInternal/Authors?$filter=(IsActiveEntity eq false)
+Authorization: Basic {{username}}:{{password}}
+
+
+### Authors Draft POST
+# @name Authors_Draft_POST
+POST {{server}}/odata/v4/BookCatalogueInternal/Authors
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "firstname": "firstname-27462078",
+  "lastname": "lastname-27462078",
+  "dateOfBirth": "2011-09-05",
+  "dateOfDeath": "2008-02-28",
+  "description": "description-27462078",
+  "currentAuthor": true,
+  "age": 81,
+  "createdAt": "2008-06-24T23:00:00.000Z",
+  "createdBy": "createdBy.gclvi@example.com",
+  "modifiedAt": "2019-06-03T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.gclvi@example.net"
+}
+
+
+### Result from POST request above
+@draftID={{Authors_Draft_POST.response.body.$.ID}}
+
+
+### Authors Draft PATCH
+# @name Authors_Draft_Patch
+PATCH {{server}}/odata/v4/BookCatalogueInternal/Authors(ID={{draftID}},IsActiveEntity=false)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "firstname": "firstname-27462078",
+  "lastname": "lastname-27462078",
+  "dateOfBirth": "2011-09-05",
+  "dateOfDeath": "2008-02-28",
+  "description": "description-27462078",
+  "currentAuthor": true,
+  "age": 81,
+  "createdAt": "2008-06-24T23:00:00.000Z",
+  "createdBy": "createdBy.gclvi@example.com",
+  "modifiedAt": "2019-06-03T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.gclvi@example.net"
+}
+
+
+### Authors Draft Prepare
+# @name Authors_Draft_Prepare
+POST {{server}}/odata/v4/BookCatalogueInternal/Authors(ID={{draftID}},IsActiveEntity=false)/BookCatalogueInternal.draftPrepare
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
+
+
+### Authors Draft Activate
+# @name Authors_Draft_Activate
+POST {{server}}/odata/v4/BookCatalogueInternal/Authors(ID={{draftID}},IsActiveEntity=false)/BookCatalogueInternal.draftActivate
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
+
+
+### Genres
+# @name Genres_GET
+GET {{server}}/odata/v4/BookCatalogueInternal/Genres
+Authorization: Basic {{username}}:{{password}}
+
+
+### Genres Drafts GET
+# @name Genres_Drafts_GET
+GET {{server}}/odata/v4/BookCatalogueInternal/Genres?$filter=(IsActiveEntity eq false)
+Authorization: Basic {{username}}:{{password}}
+
+
+### Genres Draft POST
+# @name Genres_Draft_POST
+POST {{server}}/odata/v4/BookCatalogueInternal/Genres
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "genre": "genre-27554664",
+  "description": "description-27554664",
+  "createdAt": "2013-11-20T23:00:00.000Z",
+  "createdBy": "createdBy.gelbc@example.net",
+  "modifiedAt": "2014-01-16T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.gelbc@example.org"
+}
+
+
+### Result from POST request above
+@draftID={{Genres_Draft_POST.response.body.$.ID}}
+
+
+### Genres Draft PATCH
+# @name Genres_Draft_Patch
+PATCH {{server}}/odata/v4/BookCatalogueInternal/Genres(ID={{draftID}},IsActiveEntity=false)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "genre": "genre-27554664",
+  "description": "description-27554664",
+  "createdAt": "2013-11-20T23:00:00.000Z",
+  "createdBy": "createdBy.gelbc@example.net",
+  "modifiedAt": "2014-01-16T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.gelbc@example.org"
+}
+
+
+### Genres Draft Prepare
+# @name Genres_Draft_Prepare
+POST {{server}}/odata/v4/BookCatalogueInternal/Genres(ID={{draftID}},IsActiveEntity=false)/BookCatalogueInternal.draftPrepare
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
+
+
+### Genres Draft Activate
+# @name Genres_Draft_Activate
+POST {{server}}/odata/v4/BookCatalogueInternal/Genres(ID={{draftID}},IsActiveEntity=false)/BookCatalogueInternal.draftActivate
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}

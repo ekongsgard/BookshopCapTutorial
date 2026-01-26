@@ -61,29 +61,42 @@ annotate service.Books with @(
     UI.LineItem : [
         {
             $Type : 'UI.DataField',
-            Label : 'title',
+            Label : 'Title',
             Value : title,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'stock',
+            Label : 'Stock',
             Value : stock,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'description',
+            Label : 'Description',
             Value : description,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'pages',
+            Label : 'Number of Pages',
             Value : pages,
         },
         {
             $Type : 'UI.DataField',
-            Label : 'length',
+            Label : 'Width of Spine',
             Value : length,
         },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'BookCatalogue.addItemToOrder',
+            Label : 'Add item to basket',
+        },
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'BookCatalogue.EntityContainer/placeOrder',
+            Label : 'Place Order',
+        },
+    ],
+    UI.SelectionFields : [
+        _author.currentAuthor,
     ],
 );
 
@@ -137,5 +150,28 @@ annotate service.Books with {
             },
         ],
     }
+};
+
+annotate service.Authors with {
+    currentAuthor @(
+        Common.Label : 'Current Author',
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Authors',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : currentAuthor,
+                    ValueListProperty : 'currentAuthor',
+                },
+                {
+                    $Type : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'firstname',
+                },
+            ],
+            Label : 'Is Author Alive?',
+        },
+        Common.ValueListWithFixedValues : true,
+    )
 };
 

@@ -1,0 +1,148 @@
+@server=http://localhost:8080
+@username=clerk
+@password=clerkpw
+
+
+### OrderHeader
+# @name OrderHeader_GET
+GET {{server}}/odata/v4/OrderOverviewInternal/OrderHeader
+Authorization: Basic {{username}}:{{password}}
+
+
+### OrderHeader Drafts GET
+# @name OrderHeader_Drafts_GET
+GET {{server}}/odata/v4/OrderOverviewInternal/OrderHeader?$filter=(IsActiveEntity eq false)
+Authorization: Basic {{username}}:{{password}}
+
+
+### OrderHeader Draft POST
+# @name OrderHeader_Draft_POST
+POST {{server}}/odata/v4/OrderOverviewInternal/OrderHeader
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "idNumber": 44,
+  "netAmount": 8349479.03,
+  "deliveryDate": "2000-12-22",
+  "numberOfItems": 73,
+  "_orderItems": [
+    {
+      "ID": "10911749-42f2-4405-93d6-99c3b8cb5de1",
+      "_books": {
+        "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+      },
+      "quantity": 52
+    },
+    {
+      "ID": "10911750-b8fd-488a-89a0-079955fa3a26",
+      "_books": {
+        "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+      },
+      "quantity": 92
+    }
+  ],
+  "createdAt": "2003-08-26T23:00:00.000Z",
+  "createdBy": "createdBy.darld@example.org",
+  "modifiedAt": "2019-12-11T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.darld@example.net"
+}
+
+
+### Result from POST request above
+@draftID={{OrderHeader_Draft_POST.response.body.$.ID}}
+
+
+### OrderHeader Draft PATCH
+# @name OrderHeader_Draft_Patch
+PATCH {{server}}/odata/v4/OrderOverviewInternal/OrderHeader(ID={{draftID}},IsActiveEntity=false)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "idNumber": 44,
+  "netAmount": 8349479.03,
+  "deliveryDate": "2000-12-22",
+  "numberOfItems": 73,
+  "_orderItems": [
+    {
+      "ID": "10911749-42f2-4405-93d6-99c3b8cb5de1",
+      "_books": {
+        "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+      },
+      "quantity": 52
+    },
+    {
+      "ID": "10911750-b8fd-488a-89a0-079955fa3a26",
+      "_books": {
+        "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+      },
+      "quantity": 92
+    }
+  ],
+  "createdAt": "2003-08-26T23:00:00.000Z",
+  "createdBy": "createdBy.darld@example.org",
+  "modifiedAt": "2019-12-11T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.darld@example.net"
+}
+
+
+### OrderHeader Draft Prepare
+# @name OrderHeader_Draft_Prepare
+POST {{server}}/odata/v4/OrderOverviewInternal/OrderHeader(ID={{draftID}},IsActiveEntity=false)/OrderOverviewInternal.draftPrepare
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
+
+
+### OrderHeader Draft Activate
+# @name OrderHeader_Draft_Activate
+POST {{server}}/odata/v4/OrderOverviewInternal/OrderHeader(ID={{draftID}},IsActiveEntity=false)/OrderOverviewInternal.draftActivate
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
+
+
+### OrderItems
+# @name OrderItems_GET
+GET {{server}}/odata/v4/OrderOverviewInternal/OrderItems
+Authorization: Basic {{username}}:{{password}}
+
+
+### OrderItems
+# @name OrderItems_POST
+POST {{server}}/odata/v4/OrderOverviewInternal/OrderItems
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "10911749-42f2-4405-93d6-99c3b8cb5de1",
+  "_books": {
+    "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+  },
+  "quantity": 52
+}
+
+
+### OrderItems
+# @name OrderItems_PATCH
+PATCH {{server}}/odata/v4/OrderOverviewInternal/OrderItems/10911749-42f2-4405-93d6-99c3b8cb5de1
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "10911749-42f2-4405-93d6-99c3b8cb5de1",
+  "_books": {
+    "ID": "28173450-0097-4b66-a350-ebeff6dc0667"
+  },
+  "quantity": 52
+}
+
+
+### OrderItems
+# @name OrderItems_DELETE
+DELETE {{server}}/odata/v4/OrderOverviewInternal/OrderItems/10911749-42f2-4405-93d6-99c3b8cb5de1
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
