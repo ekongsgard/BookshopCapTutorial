@@ -1,12 +1,35 @@
-
 ---
 spring:
   config.activate.on-profile: default
   sql.init.platform: h2
 cds:
   data-source.auto-config.enabled: false
+  security:
+    mock:
+      users:
+        admin:
+          password: adminpw
+          roles:
+          - admin
+        clerk:
+          password: clerkpw
+          roles:
+          - "clerk"
+        manager:
+          password: manpw
+          roles:
+          - 'manager'
 
-    
+---
+spring:
+  config:
+    activate:
+      on-profile:
+      - cloud
+cds:
+  data-source:
+    csv:
+      initialization-mode: never
     
 ---
 management:

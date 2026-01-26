@@ -1,9 +1,9 @@
 package customer.bookshopcaptutorial.handlers;
 
-import cds.gen.bookcatalogue.Authors_;
-import cds.gen.bookcatalogue.BookCatalogue_;
-import cds.gen.bookcatalogue.BooksAddItemToOrderContext;
-import cds.gen.bookcatalogue.PlaceOrderContext;
+import cds.gen.bookcatalogueinternal.Authors_;
+import cds.gen.bookcatalogueinternal.BookCatalogueInternal_;
+import cds.gen.bookcatalogueinternal.BooksFillStockContext;
+import cds.gen.bookcatalogueinternal.BooksSetDiscountContext;
 import customer.bookshopcaptutorial.helpers.EntityAuthorsHelper;
 
 import com.sap.cds.services.cds.CdsReadEventContext;
@@ -17,20 +17,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@ServiceName(BookCatalogue_.CDS_NAME)
-public class BookCatalogueHandler implements EventHandler {
-
+@ServiceName(BookCatalogueInternal_.CDS_NAME)
+public class BookCatalogueInternalHandler implements EventHandler {
   @Autowired
   private EntityAuthorsHelper authorsHelper;
 
   @On
-  public void handlePlaceOrder(PlaceOrderContext context) {
+  public void handleFillStock(BooksFillStockContext context) {
     // Your code goes here
     context.setCompleted();
   }
 
-  @On
-  public void handleAddItemToOrder(BooksAddItemToOrderContext context) {
+    @On
+  public void handleSetDiscount(BooksSetDiscountContext context) {
     // Your code goes here
     context.setCompleted();
   }
@@ -40,5 +39,4 @@ public class BookCatalogueHandler implements EventHandler {
     authorsHelper.CalcAuthorAgeOnRead(context);
     authorsHelper.IsAuthorCurrentlyAlive(context);
   }
-
 }

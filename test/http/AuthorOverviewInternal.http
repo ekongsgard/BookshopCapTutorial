@@ -1,0 +1,79 @@
+@server=http://localhost:8080
+@username=clerk
+@password=clerkpw
+
+
+### Authors
+# @name Authors_GET
+GET {{server}}/odata/v4/AuthorOverviewInternal/Authors
+Authorization: Basic {{username}}:{{password}}
+
+
+### Authors Drafts GET
+# @name Authors_Drafts_GET
+GET {{server}}/odata/v4/AuthorOverviewInternal/Authors?$filter=(IsActiveEntity eq false)
+Authorization: Basic {{username}}:{{password}}
+
+
+### Authors Draft POST
+# @name Authors_Draft_POST
+POST {{server}}/odata/v4/AuthorOverviewInternal/Authors
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "firstname": "firstname-11948594",
+  "lastname": "lastname-11948594",
+  "dateOfBirth": "2013-10-15",
+  "dateOfDeath": "2017-07-15",
+  "description": "description-11948594",
+  "currentAuthor": true,
+  "age": 73,
+  "createdAt": "2001-08-24T23:00:00.000Z",
+  "createdBy": "createdBy.743le@example.org",
+  "modifiedAt": "2022-08-06T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.743le@example.com"
+}
+
+
+### Result from POST request above
+@draftID={{Authors_Draft_POST.response.body.$.ID}}
+
+
+### Authors Draft PATCH
+# @name Authors_Draft_Patch
+PATCH {{server}}/odata/v4/AuthorOverviewInternal/Authors(ID={{draftID}},IsActiveEntity=false)
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "firstname": "firstname-11948594",
+  "lastname": "lastname-11948594",
+  "dateOfBirth": "2013-10-15",
+  "dateOfDeath": "2017-07-15",
+  "description": "description-11948594",
+  "currentAuthor": true,
+  "age": 73,
+  "createdAt": "2001-08-24T23:00:00.000Z",
+  "createdBy": "createdBy.743le@example.org",
+  "modifiedAt": "2022-08-06T23:00:00.000Z",
+  "modifiedBy": "modifiedBy.743le@example.com"
+}
+
+
+### Authors Draft Prepare
+# @name Authors_Draft_Prepare
+POST {{server}}/odata/v4/AuthorOverviewInternal/Authors(ID={{draftID}},IsActiveEntity=false)/AuthorOverviewInternal.draftPrepare
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
+
+
+### Authors Draft Activate
+# @name Authors_Draft_Activate
+POST {{server}}/odata/v4/AuthorOverviewInternal/Authors(ID={{draftID}},IsActiveEntity=false)/AuthorOverviewInternal.draftActivate
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{}
