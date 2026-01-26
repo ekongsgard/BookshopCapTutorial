@@ -45,11 +45,11 @@ entity Authors : cuid, managed {
     dateOfDeath   : Date;
     description   : String(1000);
 
-    @readonly
+    @Core.Computed
     currentAuthor : Boolean;
 
-    @readonly
-    age           : Int16;
+    @Core.Computed
+    age           : UInt8;
 /*_books        : Association to many Books
                     on _books._author = $self;*/
 }
